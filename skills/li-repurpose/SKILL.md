@@ -43,8 +43,9 @@ Each extract becomes one post, and each post has to stand completely on its
 own - the reader has not seen the video and never will. Never write "as I
 mentioned in my latest video". The post is the thing.
 
-Assign a hook formula from `li-post/hooks.json` to each, and vary them: five
-posts from one source with the same hook shape reads as a content mill.
+Assign a hook formula from [`hooks.json`](../li-post/hooks.json) to each, and
+vary them: five posts from one source with the same hook shape reads as a
+content mill.
 
 Order them across the week so the strongest claim goes first, the story goes
 midweek, and the mechanism post goes last, when people who liked the earlier
@@ -66,6 +67,7 @@ FRI  #21 Direct Value  The 4-question form that replaced the call. Steal it.
 Say "write Tuesday" and I will draft it.
 ```
 
-Then draft on request, one at a time, each through `/li-post` and `/li-human`.
-Do not dump four finished posts at once - they will all sound the same, and
-the user will edit none of them.
+Then draft on request, one at a time, each through the [li-post
+skill](../li-post/SKILL.md) and the [li-human skill](../li-human/SKILL.md). Do
+not dump four finished posts at once - they will all sound the same, and the
+user will edit none of them.

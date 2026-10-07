@@ -1,12 +1,18 @@
 # voice.md
 
-Copy this to `~/.claude/linkedin/voice.md` and fill it in. Every skill in the
-pack reads it. Ten minutes here is the difference between drafts you post and
-drafts you rewrite.
+Copy this to your agent's LinkedIn directory as `voice.md` and fill it in:
+
+- Codex: `${CODEX_HOME:-$HOME/.codex}/linkedin/voice.md`, normally
+  `~/.codex/linkedin/voice.md`.
+- Claude Code: `~/.claude/linkedin/voice.md`.
+- If you told the agent to use a different LinkedIn directory, use that path.
+
+Ten minutes here is the difference between drafts you post and drafts you
+rewrite.
 
 If you would rather not fill it in by hand, paste three of your own posts into
-Claude and say "write my voice.md from these". That works better than guessing
-at the answers.
+Claude or Codex and say "write my voice.md from these". That works better than
+guessing at the answers.
 
 ---
 

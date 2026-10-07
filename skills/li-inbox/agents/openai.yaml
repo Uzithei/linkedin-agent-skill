@@ -1,0 +1,3 @@
+interface:
+  display_name: "LinkedIn Inbox"
+  short_description: "Triage LinkedIn messages and draft replies"

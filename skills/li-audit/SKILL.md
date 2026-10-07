@@ -13,6 +13,14 @@ The only honest source of what works for an account is that account. Every
 rule in every LinkedIn guide, including the ones in this pack, is a prior. The
 user's own last 30 posts are the evidence.
 
+## LinkedIn directory
+
+Use `~/.claude/linkedin` in Claude Code. In Codex, use
+`${CODEX_HOME:-$HOME/.codex}/linkedin` (normally `~/.codex/linkedin`). If the
+user specifies a different LinkedIn directory, use it consistently instead.
+Resolve the voice, plan, and log paths below against that directory. Create
+it when saving a file; keep personal data outside the installed skill folder.
+
 ## Input
 
 Ask for whichever the user has:
@@ -22,7 +30,7 @@ Ask for whichever the user has:
 - Or just the posts and their reaction counts, which is enough for a first
   pass.
 
-Also read `~/.claude/linkedin/log.md` if it exists, since it records which
+Also read `log.md` if it exists, since it records which
 hook formula each post used.
 
 ## What to actually measure
@@ -46,7 +54,7 @@ impressions and 40 comments beat the one with 12,000 impressions and 6.
 With the top 5 and bottom 5 side by side, look for what actually separates
 them, and be willing to conclude something the user will not like:
 
-- Hook formula. Which numbers from `hooks.json` are in the top 5?
+- Hook formula. Which numbers from [`hooks.json`](../li-post/hooks.json) are in the top 5?
 - Format. Text, document, image, video.
 - Length.
 - Theme.
@@ -84,5 +92,5 @@ STOP: listicles about tools.
 DO MORE: the ones with a cost you paid, and a number.
 ```
 
-Then hand the conclusions to `/li-plan` so next week's plan is built on the
-user's own evidence rather than on defaults.
+Then hand the conclusions to the [li-plan skill](../li-plan/SKILL.md) so next
+week's plan is built on the user's own evidence rather than on defaults.

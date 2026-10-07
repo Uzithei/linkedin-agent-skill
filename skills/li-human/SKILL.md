@@ -14,6 +14,16 @@ description: >-
 Two tools live in this folder and they both actually run. Use them. Do not
 eyeball this.
 
+Resolve `humanize.py`, `detect.py`, and `slop.json` relative to this
+`SKILL.md`, not the user's working directory. Run the scripts using their
+absolute paths, and keep draft and output files in a writable workspace or
+temporary directory. Python 3 is required; there are no third-party
+dependencies. If script execution is unavailable, say so and do not invent
+scores or claim the scripts ran.
+
+The commands below assume you are in this skill's directory; otherwise use
+the resolved paths for the scripts and text files.
+
 ```bash
 python3 humanize.py draft.txt --report        # clean it, show what changed
 python3 detect.py draft.txt                    # score it, five checks

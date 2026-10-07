@@ -1,0 +1,3 @@
+interface:
+  display_name: "LinkedIn Content Audit"
+  short_description: "Analyze published posts and identify what works"

@@ -1,0 +1,3 @@
+interface:
+  display_name: "LinkedIn Humanizer"
+  short_description: "Clean draft text and run local writing checks"

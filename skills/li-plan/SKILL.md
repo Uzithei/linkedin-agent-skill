@@ -12,9 +12,17 @@ description: >-
 The control room. Everything else in this pack executes; this decides what
 gets executed. Run it once a week, on the same day.
 
+## LinkedIn directory
+
+Use `~/.claude/linkedin` in Claude Code. In Codex, use
+`${CODEX_HOME:-$HOME/.codex}/linkedin` (normally `~/.codex/linkedin`). If the
+user specifies a different LinkedIn directory, use it consistently instead.
+Resolve the voice, plan, and log paths below against that directory. Create
+it when saving a file; keep personal data outside the installed skill folder.
+
 ## Input
 
-If `~/.claude/linkedin/voice.md` and `log.md` exist, read them - the plan
+If `voice.md` and `log.md` exist, read them - the plan
 should not repeat a theme from the last fortnight. If they do not exist, ask
 for four things and write them down:
 
@@ -40,9 +48,10 @@ Mix across the week, never two of the same type back to back:
 | **Offer** | 1 per fortnight | what you sell, said plainly, no apology |
 
 For each slot give: the theme, the specific angle drawn from what actually
-happened this week, and the hook formula number from `li-post/hooks.json` that
-fits it. Not a topic - an angle. "AI" is not a plan. "The proposal we lost
-because our AI draft had an em dash in it" is a post.
+happened this week, and the hook formula number from
+[`hooks.json`](../li-post/hooks.json) that fits it. Not a topic - an angle.
+"AI" is not a plan. "The proposal we lost because our AI draft had an em dash
+in it" is a post.
 
 ## When to post
 
@@ -90,5 +99,5 @@ ENGAGE  (5 reach / 3 peers / 2 buyers)
 Say "write Tuesday" and I will draft it.
 ```
 
-Write the plan to `~/.claude/linkedin/plan.md` so the other skills can read it.
+Write the plan to `plan.md` so the other skills can read it.
 Nothing is scheduled or posted anywhere - this is a plan, and the user runs it.

@@ -14,6 +14,14 @@ badly. A comment on a post with 400 reactions gets seen by more people than
 most of your own posts. A generic one gets seen by nobody and costs you
 credibility with the author.
 
+## LinkedIn directory
+
+Use `~/.claude/linkedin` in Claude Code. In Codex, use
+`${CODEX_HOME:-$HOME/.codex}/linkedin` (normally `~/.codex/linkedin`). If the
+user specifies a different LinkedIn directory, use it consistently instead.
+Resolve the voice, plan, and log paths below against that directory. Create
+it when saving a file; keep personal data outside the installed skill folder.
+
 ## Input
 
 The user pastes the post text (and the author's name and role if they have
@@ -55,9 +63,10 @@ Pick by what the post actually is. Never default to type 1.
 ## Output
 
 Give **two options of different types**, labelled, plus a one-line reason for
-the one you would post. Run both through `/li-human` first - a comment with an
-em dash in it is more obviously machine-written than a post, because comments
-are short and people read them closely.
+the one you would post. Run both through the [li-human
+skill](../li-human/SKILL.md) first - a comment with an em dash in it is more
+obviously machine-written than a post, because comments are short and people
+read them closely.
 
 ```
 COMMENT OPTIONS  (on @author's post about hiring)
@@ -81,7 +90,7 @@ part people reply to.
 If the user wants an engagement round, ask for the 5-10 posts as pasted text
 in one message, return one comment each in a single block, and keep a running
 note of who they have already commented on this week in
-`~/.claude/linkedin/log.md`. Commenting on the same three people every day is
+`log.md`. Commenting on the same three people every day is
 visible and it looks like what it is.
 
 ## Never

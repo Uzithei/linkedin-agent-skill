@@ -1,7 +1,7 @@
 # The LinkedIn agent skill
 
-Eleven Claude skills that run a LinkedIn account. Free, MIT, no signup, no API
-key, nothing to connect.
+Eleven skills for Claude Code and OpenAI Codex that run a LinkedIn account.
+Free, MIT, no signup, no API key, nothing to connect.
 
 One of them writes your posts off 21 hook formulas. One comments on other
 people's posts. One handles the replies under yours. One scores your profile
@@ -17,6 +17,36 @@ before you ever see it.
 
 ## Install
 
+### Codex
+
+Paste this into Codex:
+
+```text
+Use $skill-installer to install all 11 skills under skills/ from
+https://github.com/Jakeschincariol/linkedin-agent-skill.
+Then confirm $li-post is available.
+```
+
+Or copy the skill folders yourself (macOS/Linux):
+
+```bash
+git clone https://github.com/Jakeschincariol/linkedin-agent-skill.git
+mkdir -p ~/.agents/skills
+cp -R linkedin-agent-skill/skills/li-* ~/.agents/skills/
+```
+
+For a project-local install, copy the same folders into your project's
+`.agents/skills/` instead. Copy the whole folders, including the Python
+scripts and JSON files. The skills share resources with each other, so
+install all eleven together.
+
+In Codex CLI or the IDE extension, use `$li-post`, `$li-human`, and the other
+`$li-*` names, or select them with `/skills`. Codex can also select a skill
+from a matching request in plain language. If newly installed skills do not
+appear, restart Codex. See the [official skill documentation](https://developers.openai.com/codex/skills/).
+
+### Claude Code
+
 Paste this into Claude:
 
 ```
@@ -29,6 +59,7 @@ Or do it yourself, in Claude Code:
 
 ```bash
 git clone https://github.com/Jakeschincariol/linkedin-agent-skill.git
+mkdir -p ~/.claude/skills
 cp -r linkedin-agent-skill/skills/li-* ~/.claude/skills/
 ```
 
@@ -40,16 +71,40 @@ Or as a plugin:
 ```
 
 Project-local instead of global: copy the same folders into your repo's
-`.claude/skills/`. No Claude Code at all? Paste any single `SKILL.md` at the
-top of a chat and it runs as a mode - you lose the two Python tools, which is
-most of the point of `/li-human`, but the rest works.
+`.claude/skills/`.
 
-Then spend ten minutes on `templates/voice.md`. Copy it to
-`~/.claude/linkedin/voice.md` and fill it in, or paste three of your own posts
-into Claude and say "write my voice.md from these". Every skill reads that
-file. Skip it and everything comes out sounding like everyone else.
+### Set up your voice
+
+Spend ten minutes on `templates/voice.md`. Copy it into your agent's LinkedIn
+directory as `voice.md` and fill it in, or paste three of your own posts and
+say "write my voice.md from these".
+
+| agent | LinkedIn directory (voice, plan, and log) |
+| --- | --- |
+| Codex | `${CODEX_HOME:-$HOME/.codex}/linkedin` (normally `~/.codex/linkedin`) |
+| Claude Code | `~/.claude/linkedin` |
+
+For Codex, from the cloned repository:
+
+```bash
+mkdir -p "${CODEX_HOME:-$HOME/.codex}/linkedin"
+cp -n templates/voice.md "${CODEX_HOME:-$HOME/.codex}/linkedin/voice.md"
+```
+
+For Claude Code, use `mkdir -p ~/.claude/linkedin` and copy the template there.
+Keep an existing voice file if you already have one. To share your voice,
+plan, and history between agents, explicitly tell both to use the same
+LinkedIn directory. Otherwise each uses its own directory.
+
+Python 3 is needed for the humanizer; it has no third-party dependencies.
+In a chat without local file or script access, you can paste a `SKILL.md` as
+instructions, but the humanizer scripts and saved voice/plan/log files will
+not be available.
 
 ## The eleven
+
+The table uses Claude Code's `/li-*` commands. In Codex, use the same names
+with a dollar sign, for example `$li-post`.
 
 | command | what it does |
 | --- | --- |
@@ -57,7 +112,7 @@ file. Skip it and everything comes out sounding like everyone else.
 | `/li-comment` | Comments on other people's posts. Nine types, picked by what the post actually is. Never "Great post!". |
 | `/li-reply` | The thread under your own post. Sorts every comment into lead / substance / peer / support / noise, then writes in that order. |
 | `/li-profile` | Scores your profile against a [12-part rubric](skills/li-profile/rubric.json) out of 100, then rewrites in fix-first order. |
-| `/li-plan` | The week. What to post, when to post it, and the 10 people to engage with. Writes `~/.claude/linkedin/plan.md`. |
+| `/li-plan` | The week. What to post, when to post it, and the 10 people to engage with. Writes `plan.md` in your agent's LinkedIn directory. |
 | `/li-human` | The humanizer. Two scripts that actually run. See below. |
 | `/li-carousel` | Document posts. Slide-by-slide copy, the cover that earns the swipe, and the PDF to upload. |
 | `/li-repurpose` | One video, newsletter or transcript into a week of posts that each stand alone. |
@@ -71,6 +126,7 @@ file. Skip it and everything comes out sounding like everyone else.
 machine, on your text, and nothing is uploaded.
 
 ```bash
+cd skills/li-human                          # from the cloned repository
 python3 humanize.py draft.txt --report      # clean it, show every change
 python3 detect.py draft.txt                  # score it, five checks
 python3 detect.py before.txt after.txt       # prove the delta

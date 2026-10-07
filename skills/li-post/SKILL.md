@@ -14,9 +14,17 @@ description: >-
 Turns one raw idea into a LinkedIn post that sounds like the person who
 posted it.
 
+## LinkedIn directory
+
+Use `~/.claude/linkedin` in Claude Code. In Codex, use
+`${CODEX_HOME:-$HOME/.codex}/linkedin` (normally `~/.codex/linkedin`). If the
+user specifies a different LinkedIn directory, use it consistently instead.
+Resolve the voice, plan, and log paths below against that directory. Create
+it when saving a file; keep personal data outside the installed skill folder.
+
 ## Before you write
 
-1. Read `~/.claude/linkedin/voice.md` if it exists. That file is the user's
+1. Read `voice.md` if it exists. That file is the user's
    voice profile: how they talk, what they never say, who they are talking to.
    If it does not exist, ask for **three of their own past posts**, infer the
    voice from those, and write the file. Do not skip this and do not invent a
@@ -53,9 +61,10 @@ ship and why, in one sentence.
 
 **2. Draft the full post** on the strongest hook.
 
-**3. Humanize it.** Run the draft through `/li-human` before showing it. Every
-post from this skill ships humanized. That is not an optional extra step, it
-is the reason the draft is worth reading.
+**3. Humanize it.** Run the draft through the [li-human
+skill](../li-human/SKILL.md) before showing it. Every post from this skill
+ships humanized. That is not an optional extra step, it is the reason the
+draft is worth reading.
 
 **4. Print the block.** Copy-ready, in a fenced block, exactly as it should be
 pasted. Then, underneath:
@@ -71,8 +80,9 @@ Reply "yes" to log it, or tell me what to change.
 ```
 
 **5. Never publish.** This skill produces text. The user posts it. On "yes",
-append the post to `~/.claude/linkedin/log.md` with the date, the hook used
-and the first line, so `/li-audit` has a history to work from later.
+append the post to `log.md` with the date, the hook used and the first line,
+so the [li-audit skill](../li-audit/SKILL.md) has a history to work from
+later.
 
 ## Rules that make the difference
 
@@ -91,8 +101,16 @@ and the first line, so `/li-audit` has a history to work from later.
 
 ## Example
 
-```
+Claude Code:
+
+```text
 /li-post we built an internal tool that cut proposal time from 5 hours to 20 min
+```
+
+Codex:
+
+```text
+$li-post we built an internal tool that cut proposal time from 5 hours to 20 min
 ```
 
 ```

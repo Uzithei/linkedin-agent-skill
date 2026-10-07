@@ -57,7 +57,8 @@ does not owe a reply to a script.
 ## Output
 
 Grouped by bucket, counts first, drafts only for the buckets that get replies,
-each one humanized. Then the gate: the user sends them.
+each one run through the [li-human skill](../li-human/SKILL.md). Then the
+gate: the user sends them.
 
 ```
 INBOX  ·  52 items  ·  3 LEAD, 2 RECRUITER, 4 PEER, 2 ASK, 41 SPAM

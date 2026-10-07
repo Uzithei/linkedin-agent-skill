@@ -50,7 +50,8 @@ Then write in that order, and stop writing when the value stops.
 
 ## Output
 
-One block, grouped by bucket, each reply copy-ready and already humanized:
+Use the [li-human skill](../li-human/SKILL.md) on the replies, then return one
+block, grouped by bucket, with each reply copy-ready:
 
 ```
 REPLIES  ·  17 comments  ·  1 LEAD, 3 SUBSTANCE, 4 PEER, 8 SUPPORT, 1 NOISE
